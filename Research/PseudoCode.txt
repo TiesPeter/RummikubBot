@@ -1,10 +1,12 @@
+const 
+
 def GetSets(cards):
 
     sets = []
 
     for card in cards:
 
-        // CHECK NUMBERS FOR SETS
+        // CHECK NUMBERS FOR SET
 
         // get info from card
 
@@ -12,8 +14,11 @@ def GetSets(cards):
         number = card.number
         joker = card.isjoker
 
+        if joker:
+            next card ->
+
         temp_set = []
-        temp_set.append(number, color)
+        temp_set.append(card(number, color))
 
         // check if card can create a set
         
@@ -26,14 +31,14 @@ def GetSets(cards):
         while continue = True:
             // find next card
 
-            number += 1
+            temp_number = number + 1
 
             // check if the next card is in cards
             // if so, add it to sets if its valid
             // if not, break out of loop 
 
-            if checkCard(number, color):
-                 temp_set.append(card(number, color))
+            if checkCard(temp_number, color):
+                temp_set.append(card(temp_number, color))
 
                 if temp_set.length > 2:
                     sets.append(temp_set)
@@ -42,9 +47,67 @@ def GetSets(cards):
 
             // if number is 13, break out of loop
 
-            if number = 13:
+            if temp_number = 13:
                 continue = False
 
         // CHECK COLOR FOR SETS
+
+        // get other colors
+
+        temp_set = []
+        temp_set.append(card(number, color))
+
+        colors = ["black", "yellow", "blue", "red"]
+        colors.pop(color)
+
+        temp_colors = []
+
+        // check for other colors
+        // if so, add to list
+
+        for temp_color in colors:
+            if checkCard(number, temp_color):
+                temp_colors.append(temp_color)
+        
+        // if list length is 2, add the set to sets (length of 3)
+
+        if temp_colors.length = 2:
+            
+            temp_set.append(card(number, color))
+
+            for c in temp_colors:
+                
+                temp_set.append(card(number, c))
+
+            sets.append(temp_set)
+
+        // if list length is 3, add every possibility of sets to sets (length of 3 or 4)
+
+        else if temp_colors.length = 3:
+            // get every possibility and add them to 
+
+            // add set of length 4
+
+            temp_set.append(card(number, color))
+
+            for c in temp_colors:
+                
+                temp_set.append(card(number, c))
+
+            sets.append(temp_set)
+
+            // add set of length 3 (all posibilities!)
+
+            possibilities = possibility(temp_colors) // will out list -> input (1,2,3) output ((1,2), (1,3), (2,3))
+
+            for pos in possibilities:
+                
+                temp_set = []
+                temp_set.append(card(number, color))
+
+                for c in pos:
+                    temp_set.append(card(number, c))
+                
+                sets.append(temp_set)
 
     return sets
