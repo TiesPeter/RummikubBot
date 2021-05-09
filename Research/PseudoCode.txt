@@ -1,0 +1,50 @@
+def GetSets(cards):
+
+    sets = []
+
+    for card in cards:
+
+        // CHECK NUMBERS FOR SETS
+
+        // get info from card
+
+        color = card.color
+        number = card.number
+        joker = card.isjoker
+
+        temp_set = []
+        temp_set.append(number, color)
+
+        // check if card can create a set
+        
+        continue = False
+        if number < 12:
+            continue = True
+
+        // finding following cards
+
+        while continue = True:
+            // find next card
+
+            number += 1
+
+            // check if the next card is in cards
+            // if so, add it to sets if its valid
+            // if not, break out of loop 
+
+            if checkCard(number, color):
+                 temp_set.append(card(number, color))
+
+                if temp_set.length > 2:
+                    sets.append(temp_set)
+            else
+                continue = False
+
+            // if number is 13, break out of loop
+
+            if number = 13:
+                continue = False
+
+        // CHECK COLOR FOR SETS
+
+    return sets
