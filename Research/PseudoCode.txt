@@ -3,6 +3,7 @@ const
 def GetSets(cards):
 
     sets = []
+    numbersdone = []
 
     for card in cards:
 
@@ -53,6 +54,11 @@ def GetSets(cards):
         // CHECK COLOR FOR SETS
 
         // get other colors
+
+        if number in numbersdone:
+            next card ->
+        else:
+            numbersdone.append(number)
 
         temp_set = []
         temp_set.append(card(number, color))
