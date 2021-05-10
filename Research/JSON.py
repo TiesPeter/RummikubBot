@@ -22,7 +22,13 @@ cards = '''
 }
 '''
 
-data_cards = json.loads(cards)
+data_cards = json.loads(cards)  # for file use json.load(f)
 
-print(data_cards["book"])
+# del data_cards["cards"][0]
+
+print(data_cards)
+
+new_data = json.dumps(data_cards, indent=2, sort_keys=True)  # for file use json.dump(data, file)
+
+print(new_data)
 
