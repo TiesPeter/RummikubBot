@@ -1,0 +1,22 @@
+RummikubBot
+
+- GetSets.py (generator for all possiblilities of groups and runs)
+
+	INPUT  list of cards (deck or table cards)
+	OUTPUT list of groups and runs
+
+- 30points.py (see if you can get 30 points or more by grouping the sets)
+
+	INPUT  list of groups and runs (from deck cards)
+	OUTPUT if you can get 30 points or more:
+		- list of groups and runs
+	       if you can't get 30 points or more:
+		- none/null
+
+- MidGame.py (linking the sets, making sure to get rid of as many cards as possible)
+
+	INPUT  list of groups and runs (from deck and table cards)
+	OUTPUT if you can make a move:
+		- list of groups and runs
+	       if you can't make a move:
+		- none/null
