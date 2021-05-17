@@ -2,14 +2,14 @@ def checkCard(data, number, color):
     if number == 14:
         return False
 
-    for card in data["cards"]:
+    for card in data:
         if card["number"] == number and card["color"] == color:
             return True
 
     return False
 
 
-def getSets2(cards: dict):
+def genSets(cards: dict):
     import itertools
 
     groups = []
@@ -18,13 +18,13 @@ def getSets2(cards: dict):
     numbers_done = []
     joker_count = 0
 
-    for card in cards["cards"]:
+    for card in cards:
         if card["isjoker"]:
             joker_count += 1
 
     min_len = 3 - joker_count
 
-    for card in cards["cards"]:
+    for card in cards:
 
         number = card["number"]
         color = card["color"]

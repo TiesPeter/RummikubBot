@@ -1,0 +1,37 @@
+[
+  {
+    "number": 1,
+    "color": "red",
+    "isjoker": false
+  },
+  {
+    "number": 2,
+    "color": "red",
+    "isjoker": false
+  },
+  {
+    "number": 3,
+    "color": "red",
+    "isjoker": false
+  },
+  {
+    "number": 4,
+    "color": "red",
+    "isjoker": false
+  },
+  {
+    "number": 6,
+    "color": "yellow",
+    "isjoker": false
+  },
+  {
+    "number": 6,
+    "color": "blue",
+    "isjoker": false
+  },
+  {
+    "number": 6,
+    "color": "red",
+    "isjoker": false
+  }
+]

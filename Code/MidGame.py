@@ -8,7 +8,7 @@ def midGame(sets: list, cards: dict, deck, timeout):
 
     dict_cards = {}
 
-    for card in cards["cards"]:
+    for card in cards:
         if str(card) not in dict_cards:
             if card["isjoker"]:
                 dict_cards["joker"] = 1
@@ -22,7 +22,7 @@ def midGame(sets: list, cards: dict, deck, timeout):
 
     dict_deck = {}
 
-    for d in deck["cards"]:
+    for d in deck:
         if str(d) not in dict_deck:
             if d["isjoker"]:
                 dict_deck["joker"] = 1
@@ -40,20 +40,10 @@ def midGame(sets: list, cards: dict, deck, timeout):
 
         if time.time() > timeout:
 
-            for i in random_moves:
-                print("left", i, "len move", len(random_moves[i]))
-
-            print("-----------------------")
-
             if random_moves == {}:
                 return []
 
-            for thing in random_moves:
-                print(thing, random_moves[thing])
-
             max_key = min(random_moves, key=int)
-
-            print("-----------------------")
 
             return [max_key, random_moves[max_key]]
 

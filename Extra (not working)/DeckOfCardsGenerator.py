@@ -20,7 +20,7 @@ def addCard(number, color, isjoker=False):
 def on_closing(card_list):
     global folder_selected
 
-    with open(folder_selected + "\\CardJSON.json", "w") as f:
+    with open(folder_selected + "\\table.json", "w") as f:
         json.dump(card_list, f, indent=2)
 
     root.destroy()
