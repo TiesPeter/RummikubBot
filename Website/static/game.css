@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.divider {
+    height: 2px;
+}
+
+@media screen and (max-width:800px) {
+
+    .cardselection {
+        display: unset !important;
+    }
+
+    .selectcards {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+}
