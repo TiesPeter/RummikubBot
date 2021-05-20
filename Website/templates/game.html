@@ -37,72 +37,79 @@
           <h1 class="pb-3 fw-bold titletext">Select your cards</h1>
           <div class="btn-group m-1 p-1" style="width: 100%;" role="group" aria-label="Basic radio toggle button group2">
             <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btnradio1">Add to Personal Cards</label>
+            <label onclick="personalcardsselected();" class="btn btn-outline-primary addpersonalcards" for="btnradio1">Add to Personal Cards</label>
           
             <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio2">Add to Table Cards</label>
+            <label onclick="tablecardsselected();" class="btn btn-outline-primary addtablecards" for="btnradio2">Add to Table Cards</label>
           </div>
-          <div class="btn-group m-1 p-1" role="group" aria-label="Basic example" style="width: 100%;">
-            <button type="button" class="btn btn-dark">Black</button>
-            <button type="button" class="btn btn-warning">Yellow</button>
-            <button type="button" class="btn btn-danger">Red</button>
-            <button type="button" class="btn btn-primary">Blue</button>
+          <div class="btn-group m-1 p-1" style="width: 100%;" role="group" aria-label="Basic radio toggle button group2">
+            <input type="radio" class="btn-check" name="btnradio2" id="btnradio8" autocomplete="off" checked>
+            <label onclick="blackcards();" class="btn btn-outline-dark blackcards" for="btnradio8">Black</label>
+          
+            <input type="radio" class="btn-check" name="btnradio2" id="btnradio9" autocomplete="off">
+            <label onclick="yellowcards();" class="btn btn-outline-warning yellowcards" for="btnradio9">Yellow</label>
+
+            <input type="radio" class="btn-check" name="btnradio2" id="btnradio10" autocomplete="off">
+            <label onclick="redcards();" class="btn btn-outline-danger redcards" for="btnradio10">Red</label>
+
+            <input type="radio" class="btn-check" name="btnradio2" id="btnradio11" autocomplete="off">
+            <label onclick="bluecards();" class="btn btn-outline-primary bluecards" for="btnradio11">Blue</label>
           </div>
-          <div class="d-grid gap-2 m-1 container-fluid p-1">
+          <div class="d-grid gap-2 m-1 container-fluid p-1 cardcontainer">
             <div class="row">
               <div class="col d-grid gap-1 pe-1">
-                <button class="btn btn-dark" type="button">Black 1</button>
+                <button onclick="addcard('black', 1)" class="btn btn-dark" type="button">Black 1</button>
               </div>
               <div class="col d-grid gap-1 ps-1">
-                <button class="btn btn-dark" type="button">Black 2</button>
+                <button onclick="addcard('black', 8)" class="btn btn-dark" type="button">Black 8</button>
               </div>
             </div>
             <div class="row">
               <div class="col d-grid gap-2 pe-1">
-                <button class="btn btn-dark" type="button">Black 3</button>
+                <button onclick="addcard('black', 2)" class="btn btn-dark" type="button">Black 2</button>
               </div>
               <div class="col d-grid gap-2 ps-1">
-                <button class="btn btn-dark" type="button">Black 4</button>
+                <button onclick="addcard('black', 9)" class="btn btn-dark" type="button">Black 9</button>
               </div>
             </div>
             <div class="row">
               <div class="col d-grid gap-2 pe-1">
-                <button class="btn btn-dark" type="button">Black 5</button>
+                <button onclick="addcard('black', 3)" class="btn btn-dark" type="button">Black 3</button>
               </div>
               <div class="col d-grid gap-2 ps-1">
-                <button class="btn btn-dark" type="button">Black  6</button>
+                <button onclick="addcard('black', 10)" class="btn btn-dark" type="button">Black 10</button>
               </div>
             </div>
             <div class="row">
               <div class="col d-grid gap-2 pe-1">
-                <button class="btn btn-dark" type="button">Black 7</button>
+                <button onclick="addcard('black', 4)" class="btn btn-dark" type="button">Black 4</button>
               </div>
               <div class="col d-grid gap-2 ps-1">
-                <button class="btn btn-dark" type="button">Black 8</button>
+                <button onclick="addcard('black', 11)" class="btn btn-dark" type="button">Black 11</button>
               </div>
             </div>
             <div class="row">
               <div class="col d-grid gap-2 pe-1">
-                <button class="btn btn-dark" type="button">Black 9</button>
+                <button onclick="addcard('black', 5)" class="btn btn-dark" type="button">Black 5</button>
               </div>
               <div class="col d-grid gap-2 ps-1">
-                <button class="btn btn-dark" type="button">Black 10</button>
+                <button onclick="addcard('black', 12)" class="btn btn-dark" type="button">Black 12</button>
               </div>
             </div>
             <div class="row">
               <div class="col d-grid gap-2 pe-1">
-                <button class="btn btn-dark" type="button">Black 11</button>
+                <button onclick="addcard('black', 6)" class="btn btn-dark" type="button">Black 6</button>
               </div>
               <div class="col d-grid gap-2 ps-1">
-                <button class="btn btn-dark" type="button">Black 12</button>
+                <button onclick="addcard('black', 13)" class="btn btn-dark" type="button">Black 13</button>
               </div>
             </div>
             <div class="row">
               <div class="col d-grid gap-2 pe-1">
-                <button class="btn btn-dark" type="button">Black 13</button>
+                <button onclick="addcard('black', 7)" class="btn btn-dark" type="button">Black 7</button>
               </div>
               <div class="col d-grid gap-2 ps-1">
-                <button class="btn btn-secondary" type="button">Joker</button>
+                <button onclick="addcard('', 0)" class="btn btn-secondary" type="button">Joker</button>
               </div>
             </div>
           </div>
@@ -110,22 +117,97 @@
       </div>
       <div class="titlecontainer container text-center mt-2">
         <div
-          class="bg-light p-5 rounded-lg my-5 d-flex flex-column align-items-center"
+          class="bg-light p-5 rounded-lg my-5 d-flex flex-column align-items-center selectcards"
         >
-          <h1 class="pb-3 fw-bold titletext">Cards</h1>
-          <p class="lead fw-normal pb-2">
-            You can use <u>BirthdayCalendar</u> to create calendars for birthdays
-            of your family and friends with ease. You, your family and your
-            friends will get notified on everyone's birthday! How cool is that?
-          </p>
-          <p class="lead fw-normal pb-2">
-            Click the button below to create a new calendar, next up you can
-            <u>share</u> the link with your family and friends and they can start
-            filling in the calendar.
-          </p>
-          <a class="btn btn-primary btn-lg m-2" href="/game" role="button"
-            >Start a new game</a
-          >
+          <h1 class="pb-3 fw-bold titletext">View your cards</h1>
+          <div class="btn-group m-1 p-1" style="width: 100%;" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio1" id="btnradio4" autocomplete="off" checked>
+            <label onclick="showpersonalcards(); personalcardsselected();" class="btn btn-outline-primary addpersonalcards" for="btnradio4">View Personal Cards</label>
+          
+            <input type="radio" class="btn-check" name="btnradio1" id="btnradio5" autocomplete="off">
+            <label onclick="showtablecards(); tablecardsselected();" class="btn btn-outline-primary addtablecards" for="btnradio5">View Table Cards</label>
+          </div>
+          <ul class="list-group m-1 p-1 personalcards" style="width: 100%;">
+            <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+              <div>
+                <span class="me-2 badge bg-dark rounded-pill">1x</span>
+                Black 2
+              </div>
+              <button type="button" class="btn btn-sm btn-dark">Remove</button>
+            </li>
+            <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+              <div>
+                <span class="me-2 badge bg-dark rounded-pill">2x</span>
+                Black 3
+              </div>
+              <button type="button" class="btn btn-sm btn-dark">Remove</button>
+            </li>
+            <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center">
+              <div>
+                <span class="me-2 badge bg-primary rounded-pill">1x</span>
+                Blue 4
+              </div>
+              <button type="button" class="btn btn-sm btn-primary">Remove</button>
+            </li>
+            <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
+              <div>
+                <span class="me-2 badge bg-warning rounded-pill">1x</span>
+                Yellow 5
+              </div>
+              <button type="button" class="btn btn-sm btn-warning">Remove</button>
+            </li>
+            <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
+              <div>
+                <span class="me-2 badge bg-danger rounded-pill">1x</span>
+                Red 11
+              </div>
+              <button type="button" class="btn btn-sm btn-danger">Remove</button>
+            </li>
+            <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
+              <div>
+                <span class="me-2 badge bg-danger rounded-pill">2x</span>
+                Red 12
+              </div>
+              <button type="button" class="btn btn-sm btn-danger">Remove</button>
+            </li>
+          </ul>
+          <ul class="list-group m-1 p-1 tablecards" style="width: 100%;">
+            <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+              <div>
+                <span class="me-2 badge bg-dark rounded-pill">2x</span>
+                Black 3
+              </div>
+              <button type="button" class="btn btn-sm btn-dark">Remove</button>
+            </li>
+            <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center">
+              <div>
+                <span class="me-2 badge bg-primary rounded-pill">1x</span>
+                Blue 4
+              </div>
+              <button type="button" class="btn btn-sm btn-primary">Remove</button>
+            </li>
+            <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
+              <div>
+                <span class="me-2 badge bg-warning rounded-pill">1x</span>
+                Yellow 5
+              </div>
+              <button type="button" class="btn btn-sm btn-warning">Remove</button>
+            </li>
+            <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
+              <div>
+                <span class="me-2 badge bg-danger rounded-pill">1x</span>
+                Red 11
+              </div>
+              <button type="button" class="btn btn-sm btn-danger">Remove</button>
+            </li>
+            <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
+              <div>
+                <span class="me-2 badge bg-danger rounded-pill">2x</span>
+                Red 12
+              </div>
+              <button type="button" class="btn btn-sm btn-danger">Remove</button>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
