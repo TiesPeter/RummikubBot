@@ -86,7 +86,7 @@ function updatecards(cards, object) {
       }
 
       if (key.includes(",0")) {
-        personalcards.innerHTML += '<li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center"> <div> <span class="me-2 badge bg-secondary rounded-pill">' + String(value) + 'x</span>Joker</div> <button onclick="removecard(\'\',0);" type="button" class="btn btn-sm btn-secondary">Remove</button> </li>';
+        personalcards.innerHTML += '<li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center"> <div> <span class="me-2 badge bg-secondary rounded-pill">' + String(value) + 'x</span> Joker</div> <button onclick="removecard(\'\',0);" type="button" class="btn btn-sm btn-secondary">Remove</button> </li>';
         continue;
       }
 
@@ -118,7 +118,7 @@ function updatecards(cards, object) {
       }
 
       if (key.includes(",0")) {
-        tablecards.innerHTML += '<li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center"> <div> <span class="me-2 badge bg-secondary rounded-pill">' + String(value) + 'x</span>Joker</div> <button onclick="removecard(\'\',0);" type="button" class="btn btn-sm btn-secondary">Remove</button> </li>';
+        tablecards.innerHTML += '<li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center"> <div> <span class="me-2 badge bg-secondary rounded-pill">' + String(value) + 'x</span> Joker</div> <button onclick="removecard(\'\',0);" type="button" class="btn btn-sm btn-secondary">Remove</button> </li>';
         continue;
       }
 
@@ -184,11 +184,80 @@ function showresults(response){
   if (response.length == 1) {
     results.innerHTML = "Ohh no, you only have " + response[0] + " points :(";
   } else {
-    results.innerHTML = "Wohoo, you have " + response[0] + " points :)";
+    results.innerHTML = "<p>Wohoo, you have " + response[0] + " points :)</p>";
     for (x = 0; x < response[1].length; x++) {
-      console.log(x)
-      console.log(response[1][x])
-      // sdfaljk;lll;l;l;l;l;l;l;l;l;l;l;l;l;l;l;l;l;l;l;l;l;l;lljkladfjklasdfkljsdfljksdf
+      for (y = 0; y < response[1][x].length; y++) {
+        if (response[1][x][y]["isjoker"] == true) {
+          results.innerHTML += '<li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center"> <div> <span class="me-2 badge bg-secondary rounded-pill">1x</span> Joker</div></li>';
+          continue
+        }
+
+        if (response[1][x][y]["color"] == "black"){
+          color = "Black";
+          colorname = "dark";
+        } else if (response[1][x][y]["color"] == "yellow") {
+          color = "Yellow"
+          colorname = "warning"
+        } else if (response[1][x][y]["color"] == "red") {
+          color = "Red";
+          colorname = "danger";
+        } else if (response[1][x][y]["color"] == "blue") {
+          color = "Blue";
+          colorname = "primary";
+        }
+        
+        number = response[1][x][y]["number"];
+
+        results.innerHTML += '<li class="list-group-item list-group-item-' + colorname +' d-flex justify-content-between align-items-center"> <div> <span class="me-2 badge bg-' + colorname + ' rounded-pill">1x</span> ' + color + ' ' + number + '</div></li>'
+      }
+
+      results.innerHTML += '<p></p>';
+    
+    }
+
+  }
+  
+}
+
+function showresults2(response){
+  console.log(response);
+  if (response.length == 1) {
+    results.innerHTML = "I'm sorry, but you can't lay down any cards :(";
+  } else {
+    if (response[0] == 0) {
+      results.innerHTML = "<p>Yessssir, you WIN!!!";
+    } else {
+      results.innerHTML = "<p>Wohoo, you will have " + response[0] + " cards left :)</p>";
+    }
+
+    for (x = 0; x < response[1].length; x++) {
+      for (y = 0; y < response[1][x].length; y++) {
+        if (response[1][x][y]["isjoker"] == true) {
+          results.innerHTML += '<li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center"> <div> <span class="me-2 badge bg-secondary rounded-pill">1x</span> Joker</div></li>';
+          continue
+        }
+
+        if (response[1][x][y]["color"] == "black"){
+          color = "Black";
+          colorname = "dark";
+        } else if (response[1][x][y]["color"] == "yellow") {
+          color = "Yellow"
+          colorname = "warning"
+        } else if (response[1][x][y]["color"] == "red") {
+          color = "Red";
+          colorname = "danger";
+        } else if (response[1][x][y]["color"] == "blue") {
+          color = "Blue";
+          colorname = "primary";
+        }
+        
+        number = response[1][x][y]["number"];
+
+        results.innerHTML += '<li class="list-group-item list-group-item-' + colorname +' d-flex justify-content-between align-items-center"> <div> <span class="me-2 badge bg-' + colorname + ' rounded-pill">1x</span> ' + color + ' ' + number + '</div></li>'
+      }
+
+      results.innerHTML += '<p></p>';
+    
     }
 
   }
@@ -209,6 +278,24 @@ async function firstpoints(){
   .then(response => response.json())
   .then(data =>{
   showresults(data);
+  fps.disabled = false;
+})
+}
+
+async function midgame(){
+  window.scroll({
+    top: 10000,
+    left: 0,
+    behavior: 'smooth'
+  });
+  
+  results.innerHTML = '<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>'
+  fps.disabled = true;
+
+  fetch("/midgame/" + JSON.stringify(pc_list) + "/" + JSON.stringify(tc_list))
+  .then(response => response.json())
+  .then(data =>{
+  showresults2(data);
   fps.disabled = false;
 })
 }

@@ -153,8 +153,9 @@ def genSets(cards: dict):
         if joker_count == jokers:
             rows2.append(temp_set[:])
             continue
-
-        rows2.append(temp_set)
+        
+        if len(temp_set) > 2:
+            rows2.append(temp_set)
 
         for e in range(1, joker_count - jokers + 1):
             possibilities = list(itertools.combinations_with_replacement(range(2), e))
