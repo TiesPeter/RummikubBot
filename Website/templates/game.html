@@ -32,7 +32,7 @@
     <div class="d-flex titlecontainer container text-center mt-2 cardselection">
       <div class="titlecontainer container text-center mt-2">
         <div
-          class="bg-light p-5 rounded-lg my-5 d-flex flex-column align-items-center selectcards"
+          class="bg-light p-5 rounded-lg mt-5 d-flex flex-column align-items-center selectcards"
         >
           <h1 class="pb-3 fw-bold titletext">Select your cards</h1>
           <div class="btn-group m-1 p-1" style="width: 100%;" role="group" aria-label="Basic radio toggle button group2">
@@ -117,7 +117,7 @@
       </div>
       <div class="titlecontainer container text-center mt-2">
         <div
-          class="bg-light p-5 rounded-lg my-5 d-flex flex-column align-items-center selectcards"
+          class="bg-light p-5 rounded-lg mt-5 d-flex flex-column align-items-center selectcards"
         >
           <h1 class="pb-3 fw-bold titletext">View your cards</h1>
           <div class="btn-group m-1 p-1" style="width: 100%;" role="group" aria-label="Basic radio toggle button group">
@@ -128,93 +128,46 @@
             <label onclick="showtablecards(); tablecardsselected();" class="btn btn-outline-primary addtablecards" for="btnradio5">View Table Cards</label>
           </div>
           <ul class="list-group m-1 p-1 personalcards" style="width: 100%;">
-            <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
-              <div>
-                <span class="me-2 badge bg-dark rounded-pill">1x</span>
-                Black 2
-              </div>
-              <button type="button" class="btn btn-sm btn-dark">Remove</button>
-            </li>
-            <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
-              <div>
-                <span class="me-2 badge bg-dark rounded-pill">2x</span>
-                Black 3
-              </div>
-              <button type="button" class="btn btn-sm btn-dark">Remove</button>
-            </li>
-            <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center">
-              <div>
-                <span class="me-2 badge bg-primary rounded-pill">1x</span>
-                Blue 4
-              </div>
-              <button type="button" class="btn btn-sm btn-primary">Remove</button>
-            </li>
-            <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
-              <div>
-                <span class="me-2 badge bg-warning rounded-pill">1x</span>
-                Yellow 5
-              </div>
-              <button type="button" class="btn btn-sm btn-warning">Remove</button>
-            </li>
-            <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
-              <div>
-                <span class="me-2 badge bg-danger rounded-pill">1x</span>
-                Red 11
-              </div>
-              <button type="button" class="btn btn-sm btn-danger">Remove</button>
-            </li>
-            <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
-              <div>
-                <span class="me-2 badge bg-danger rounded-pill">2x</span>
-                Red 12
-              </div>
-              <button type="button" class="btn btn-sm btn-danger">Remove</button>
-            </li>
           </ul>
           <ul class="list-group m-1 p-1 tablecards" style="width: 100%;">
-            <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
-              <div>
-                <span class="me-2 badge bg-dark rounded-pill">2x</span>
-                Black 3
-              </div>
-              <button type="button" class="btn btn-sm btn-dark">Remove</button>
-            </li>
-            <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center">
-              <div>
-                <span class="me-2 badge bg-primary rounded-pill">1x</span>
-                Blue 4
-              </div>
-              <button type="button" class="btn btn-sm btn-primary">Remove</button>
-            </li>
-            <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
-              <div>
-                <span class="me-2 badge bg-warning rounded-pill">1x</span>
-                Yellow 5
-              </div>
-              <button type="button" class="btn btn-sm btn-warning">Remove</button>
-            </li>
-            <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
-              <div>
-                <span class="me-2 badge bg-danger rounded-pill">1x</span>
-                Red 11
-              </div>
-              <button type="button" class="btn btn-sm btn-danger">Remove</button>
-            </li>
-            <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
-              <div>
-                <span class="me-2 badge bg-danger rounded-pill">2x</span>
-                Red 12
-              </div>
-              <button type="button" class="btn btn-sm btn-danger">Remove</button>
-            </li>
           </ul>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex titlecontainer container text-center mt-2 cardselection">
+      <div class="titlecontainer container text-center mt-2">
+        <div
+          class="bg-light p-5 rounded-lg my-5 d-flex flex-column align-items-center selectcards"
+        >
+          <h1 class="pb-3 fw-bold titletext">Click a button</h1>
+          <div class="d-grid gap-2 p-1 m-1 text-start" style="width: 100%;">
+            <button onclick="firstpoints();" class="btn btn-primary mt-3 fps" type="button">Do you have 30 points?</button>
+            <div class="form-text" style="text-align: justify;">Click this button below to see if you have 30 points by creating groups and runs using your personal cards.</div>
+            <button class="btn btn-primary mt-3" type="button">Can you make a move?</button>
+            <div class="form-text" style="text-align: justify;">Click this button to generate the best move using your personal cards and the table cards. (Only use this, if you already laid down 30 points)</div>
+            <div class="btn-group mt-3" role="group" aria-label="Basic example">
+              <button onclick="pc_list = {}; updatecards('pc', pc_list);" type="button" class="btn btn-danger">Reset personal cards</button>
+              <button onclick="tc_list = {}; updatecards('tc', tc_list);" type="button" class="btn btn-danger">Reset table cards</button>
+              <button onclick="pc_list = {}; tc_list = {}; updatecards('tc', tc_list); updatecards('pc', pc_list);" class="btn btn-danger" type="button">Reset all cards</button>
+            </div>
+            </div>
+        </div>
+      </div>
+      <div class="titlecontainer container text-center mt-2">
+        <div
+          class="bg-light p-5 rounded-lg my-5 d-flex flex-column align-items-center selectcards"
+        >
+          <h1 class="pb-3 fw-bold titletext">Results</h1>
+          <div class="results">
+            No results to show...
+          </div>
         </div>
       </div>
     </div>
 
     <nav class="navbar navbar-light bg-light">
       <div class="container">
-        <a href="/home" class="navbar-brand fs-4">BirthdayCalendar</a>
+        <a href="/home" class="navbar-brand fs-4">RummikubBot</a>
         <span class="navbar-text"> &#169; 2021 </span>
       </div>
     </nav>

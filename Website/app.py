@@ -1,7 +1,9 @@
 from flask import Flask, redirect, render_template, request, jsonify, make_response
-from cs50 import SQL
-import uuid
-
+import json
+import time
+import GenSets
+import MidGame
+import StartPoints
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -14,8 +16,48 @@ def index():
 def home():
     return render_template("home.html")
 
+@app.route("/firstpoints/<raw_cards>")
+def firstpoints(raw_cards):
+
+    raw_cards2 = json.loads(raw_cards)
+    timeout = time.time() + 5
+    cards = []
+
+    for key in raw_cards2.keys():
+
+        color = ""
+        number = 0
+        isjoker = False
+
+        if "black" in key:
+            color = "black"
+        elif "yellow" in key:
+            color = "yellow"
+        elif "red" in key:
+            color = "red"
+        elif "blue" in key:
+            color = "blue"
+        else:
+            isjoker = True
+        
+        for i in range(1, 14):
+            if ("," + str(i)) in key:
+                number = i
+    
+        for _ in range(int(raw_cards2[key])):
+            cards.append({
+                "number": number,
+                "color": color,
+                "isjoker": isjoker
+            })
+
+    sets = GenSets.genSets(cards)
+    res = StartPoints.startPoints(sets, cards, timeout)
+    
+    return jsonify(res)
+
 @app.route("/game", methods=["GET", "POST"])
-def calendar3():
+def game():
 
     if request.method == "GET":
 
