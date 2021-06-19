@@ -10,11 +10,11 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 @app.route('/')
 def index():
-    return redirect("/home")
+    return render_template("home.html")
 
 @app.route("/home")
 def home():
-    return render_template("home.html")
+    return redirect("/")
 
 @app.route("/midgame/<raw_deck>/<raw_table>")
 def midgame(raw_deck, raw_table):
@@ -83,9 +83,6 @@ def midgame(raw_deck, raw_table):
             })
 
     sets = GenSets.genSets(deck + table)
-
-    print(sets)
-    print()
 
     res = MidGame.midGame(sets, deck + table, deck, timeout)
     
