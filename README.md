@@ -6,7 +6,8 @@ A solver for the game Rummikub to make sure you win every time!
 - Generates the best possible move each turn
 
 ## Drawbacks
-Still really inefficient when using one or two wildcards (jokers).
+Still really inefficient when using one or two wildcards (jokers).<br>
+The implemented algorithm is definitely not the prettiest.
 
 <br>
 Ties Petersen [June 2021]
